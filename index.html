@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bhavya Goyal — CS student at J.C. Bose University. Building self-hosted, local-first tools and local LLM software across Windows, Android, and Web.">
+  <meta name="author" content="Bhavya Goyal">
+  <title>Bhavya Goyal — Local-first software</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <div class="progress-bar" id="progress-bar"></div>
+
+  <header class="site-header" id="site-header">
+    <div class="wrap header-inner">
+      <a href="#" class="brand">
+        <span class="brand-mark">~/</span>bhavya<span class="brand-caret"></span>
+      </a>
+      <nav class="nav" id="nav">
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="reveal">
+          <p class="eyebrow">$ whoami — bhavya, cs student<span class="caret"></span></p>
+          <h1 class="hero-title">
+            <span class="line">Software that runs <em>where you point it,</em></span>
+            <span class="line">not on <em>someone else&rsquo;s server.</em></span>
+          </h1>
+          <p class="hero-text">
+            I build self-hosted, local-first tools: a music player with its own backend, and a way to
+            run AI models without sending anything to the cloud. I care about the unglamorous stuff too
+            — fixing memory leaks, squashing race conditions, and making things actually fast.
+          </p>
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary">See my work <span class="btn-arrow">&darr;</span></a>
+            <a href="https://github.com/codee-with-bhavya" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">GitHub</a>
+          </div>
+        </div>
+
+        <div class="hero-panel reveal" style="--i:2">
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="t-dot t-dot-red"></span>
+              <span class="t-dot t-dot-amber"></span>
+              <span class="t-dot t-dot-green"></span>
+              <span class="t-title">bhavya@local: ~</span>
+            </div>
+            <div class="terminal-body">
+              <p class="t-line"><span class="prompt">bhavya@local:~$</span> whoami</p>
+              <p class="t-out">bhavya — cs student, local-first dev</p>
+              <p class="t-line"><span class="prompt">bhavya@local:~$</span> uptime</p>
+              <p class="t-out">1 yr tinkering, 0 clouds involved</p>
+              <p class="t-line"><span class="prompt">bhavya@local:~$</span> ps -ef | grep "musify"</p>
+              <p class="t-out">python3 ./backend &middot; ~500 KB steady state</p>
+              <p class="t-line"><span class="prompt">bhavya@local:~$</span><span class="caret"></span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats">
+        <div class="stat">
+          <span class="stat-num" data-count="2">0</span>
+          <span class="stat-label">projects running</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num" data-count="500">0</span><span class="stat-unit">KB</span>
+          <span class="stat-label">steady-state memory</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num" data-count="0">0</span>
+          <span class="stat-label">clouds involved</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Marquee -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Python</span><i>*</i><span>FastAPI</span><i>*</i><span>JavaScript</span><i>*</i>
+        <span>Windows</span><i>*</i><span>Android</span><i>*</i><span>llama.cpp</span><i>*</i>
+        <span>GGUF</span><i>*</i><span>WebSockets</span><i>*</i><span>asyncio</span><i>*</i>
+        <span>Git</span><i>*</i><span>Linux</span><i>*</i><span>self-hosted</span><i>*</i>
+        <span>Python</span><i>*</i><span>FastAPI</span><i>*</i><span>JavaScript</span><i>*</i>
+        <span>Windows</span><i>*</i><span>Android</span><i>*</i><span>llama.cpp</span><i>*</i>
+        <span>GGUF</span><i>*</i><span>WebSockets</span><i>*</i><span>asyncio</span><i>*</i>
+        <span>Git</span><i>*</i><span>Linux</span><i>*</i><span>self-hosted</span><i>*</i>
+      </div>
+    </div>
+
+    <!-- Projects -->
+    <section id="projects" class="section">
+      <div class="section-head reveal">
+        <span class="section-index">01</span>
+        <h2>Projects</h2>
+      </div>
+
+      <div class="projects-grid">
+        <article class="card reveal" style="--i:1">
+          <div class="card-top">
+            <span class="card-num">01 / musify</span>
+            <span class="status"><i class="dot dot-amber"></i> running</span>
+          </div>
+          <h3 class="card-title">Musify</h3>
+          <p class="tagline">A self-hosted YouTube Music clone — your library, your server.</p>
+          <p class="card-text">
+            Backend is FastAPI with custom Innertube scrapers for search and streaming; frontend is a
+            single hand-written HTML/CSS/JS file, no framework. Most of the work has been under the hood:
+            fixing route-ordering bugs, closing a streaming timeout gap, rewriting a broken playback
+            queue, and cutting the app&rsquo;s memory footprint down dramatically.
+          </p>
+          <p class="metric-chip"><span class="metric-pulse"></span>memory: ~5&nbsp;MB peak &rarr; ~500&nbsp;KB steady state</p>
+          <div class="card-tags">
+            <span>Python</span><span>FastAPI</span><span>Vanilla JS</span><span>HTTP streaming</span>
+          </div>
+          <div class="card-links">
+            <a href="https://github.com/codee-with-bhavya/Musify" target="_blank" rel="noopener noreferrer">GitHub <span class="arrow">&#8599;</span></a>
+            <a href="https://github.com/codee-with-bhavya/Musify" target="_blank" rel="noopener noreferrer">Live demo <span class="arrow">&#8599;</span></a>
+          </div>
+        </article>
+
+        <article class="card reveal" style="--i:2">
+          <div class="card-top">
+            <span class="card-num">02 / neuro-desk</span>
+            <span class="status"><i class="dot dot-teal"></i> in development</span>
+          </div>
+          <h3 class="card-title">Neuro Desk</h3>
+          <p class="tagline">Run a local LLM on your own Windows PC — no cloud required.</p>
+          <p class="card-text">
+            A Windows app for running and using local language models directly on your machine. Still
+            early — full write-up and demo coming as it takes shape.
+          </p>
+          <div class="card-tags">
+            <span>Windows</span><span>Local LLM</span>
+          </div>
+          <div class="card-links">
+            <a href="https://github.com/codee-with-bhavya" target="_blank" rel="noopener noreferrer">GitHub <span class="arrow">&#8599;</span></a>
+            <a href="https://github.com/codee-with-bhavya" target="_blank" rel="noopener noreferrer">Live demo <span class="arrow">&#8599;</span></a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="section">
+      <div class="section-head reveal">
+        <span class="section-index">02</span>
+        <h2>Skills &amp; Tools</h2>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-card reveal" style="--i:1">
+          <span class="skill-idx">/lang</span>
+          <h3>Languages &amp; Core</h3>
+          <p>Python, JavaScript (ES6+), C / C++, HTML5, CSS3, SQL</p>
+        </div>
+        <div class="skill-card reveal" style="--i:2">
+          <span class="skill-idx">/back</span>
+          <h3>Backend &amp; Systems</h3>
+          <p>FastAPI, Asyncio, HTTP Streaming, WebSockets, REST APIs, Innertube scrapers</p>
+        </div>
+        <div class="skill-card reveal" style="--i:3">
+          <span class="skill-idx">/llm</span>
+          <h3>AI &amp; Local LLMs</h3>
+          <p>Local inference, llama.cpp, GGUF quantization, prompt engineering, offline tooling</p>
+        </div>
+        <div class="skill-card reveal" style="--i:4">
+          <span class="skill-idx">/env</span>
+          <h3>Platforms</h3>
+          <p>Windows desktop, Android, Linux, Git, low-overhead memory profiling</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section">
+      <div class="section-head reveal">
+        <span class="section-index">03</span>
+        <h2>About</h2>
+      </div>
+
+      <div class="about-grid">
+        <p class="about-lead reveal">I like building things that <em>actually run on your machine</em>, instead of living in a demo video or depending on someone else&rsquo;s subscription.</p>
+        <div>
+          <p class="about-text reveal">
+            I&rsquo;m a Computer Science student at <strong>J.C. Bose University of Science and Technology</strong>.
+            Most of my projects involve self-hosted systems, Windows desktop tools, and local AI workflows.
+            I spend a lot of time on the low-level details: resolving async bottlenecks, debugging playback
+            queues, and tuning memory consumption so software runs lean.
+          </p>
+          <p class="about-text reveal">
+            Available for freelance work on AI/LLM tooling, FastAPI backends, and local-first software.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+      <div class="section-head reveal">
+        <span class="section-index">04</span>
+        <h2>Contact</h2>
+      </div>
+
+      <div class="contact-grid">
+        <div class="reveal">
+          <p class="contact-lead">Open to freelance, collabs, and questions about running things locally.</p>
+          <p class="contact-email">
+            <a href="mailto:bhavayagoyal07@gmail.com">bhavayagoyal07@gmail.com <span class="arrow">&#8599;</span></a>
+          </p>
+        </div>
+        <div class="contact-links reveal">
+          <a href="https://github.com/codee-with-bhavya" target="_blank" rel="noopener noreferrer">
+            <span>GitHub</span><span class="arrow">&#8599;</span>
+          </a>
+          <a href="https://www.linkedin.com/in/bhavya-goyal-053587287/" target="_blank" rel="noopener noreferrer">
+            <span>LinkedIn</span><span class="arrow">&#8599;</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <span>&copy; 2026 Bhavya Goyal</span>
+      <span>Built without a framework. All bytes stay local.</span>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
