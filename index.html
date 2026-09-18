@@ -113,12 +113,12 @@
             <span class="status"><i class="dot dot-amber"></i> running</span>
           </div>
           <h3 class="card-title">Musify</h3>
-          <p class="tagline">A self-hosted YouTube Music clone — your library, your server.</p>
+          <p class="tagline">A modern ad-free music streaming, straight from the web</p>
           <p class="card-text">
-            Backend is FastAPI with custom Innertube scrapers for search and streaming; frontend is a
-            single hand-written HTML/CSS/JS file, no framework. Most of the work has been under the hood:
-            fixing route-ordering bugs, closing a streaming timeout gap, rewriting a broken playback
-            queue, and cutting the app&rsquo;s memory footprint down dramatically.
+            Musify is a modern live music streaming website built with a Python/FastAPI backend and a
+            single-file vanilla JS frontend. It streams and delivers music data through a custom scraping
+            integration, with a redesigned sidebar and library UI for smooth browsing. Continuously
+            refined across multiple passes for performance, stability, and memory efficiency.
           </p>
           <p class="metric-chip"><span class="metric-pulse"></span>memory: ~5&nbsp;MB peak &rarr; ~500&nbsp;KB steady state</p>
           <div class="card-tags">
@@ -132,17 +132,21 @@
 
         <article class="card reveal" style="--i:2">
           <div class="card-top">
-            <span class="card-num">02 / neuro-desk</span>
-            <span class="status"><i class="dot dot-teal"></i> in development</span>
+            <span class="card-num">02 / neurodesk</span>
+            <span class="status"><i class="dot dot-teal"></i> shipped</span>
           </div>
-          <h3 class="card-title">Neuro Desk</h3>
-          <p class="tagline">Run a local LLM on your own Windows PC — no cloud required.</p>
+          <h3 class="card-title">NeuroDesk</h3>
+          <p class="tagline">App that runs local LLM&rsquo;s on your machine — no cloud, no API.</p>
           <p class="card-text">
-            A Windows app for running and using local language models directly on your machine. Still
-            early — full write-up and demo coming as it takes shape.
+            A desktop app that runs 1300+ AI models entirely offline on your own hardware — your
+            library, your machine, nothing leaves your PC. Everything lives on your machine, so there&rsquo;s
+            no internet needed, and no cloud or account setup. Most of the work has been under the hood:
+            a clean, stable background engine and polished desktop shell that make running models
+            effortless — just download, launch, and chat.
           </p>
+          <p class="metric-chip"><span class="metric-pulse"></span>installer exe: ~200 MB</p>
           <div class="card-tags">
-            <span>Windows</span><span>Local LLM</span>
+            <span>Go</span><span>Electron</span><span>React</span><span>Inno Setup</span><span>HTTP streaming</span>
           </div>
           <div class="card-links">
             <a href="https://github.com/codee-with-bhavya" target="_blank" rel="noopener noreferrer">GitHub <span class="arrow">&#8599;</span></a>
