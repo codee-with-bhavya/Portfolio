@@ -56,6 +56,81 @@
     });
   }
 
+  // Project carousel.
+  var carousel = document.getElementById("projects-carousel");
+  var carouselGoTo = null;
+  if (carousel) {
+    var carouselSlides = Array.prototype.slice.call(carousel.querySelectorAll(".carousel-slide"));
+    var carouselPrev = document.getElementById("carousel-prev");
+    var carouselNext = document.getElementById("carousel-next");
+    var carouselStatus = document.getElementById("carousel-status");
+    var carouselIndex = 0;
+    var carouselTotal = carouselSlides.length;
+
+    carouselGoTo = function goTo(index) {
+      if (!carouselTotal) return;
+      carouselIndex = ((index % carouselTotal) + carouselTotal) % carouselTotal;
+      carouselSlides.forEach(function (slide, i) {
+        slide.classList.toggle("is-active", i === carouselIndex);
+      });
+      if (carouselStatus) {
+        carouselStatus.textContent = "Showing project " + (carouselIndex + 1) + " of " + carouselTotal;
+      }
+    };
+
+    carouselPrev.addEventListener("click", function () {
+      carouselGoTo(carouselIndex - 1);
+    });
+    carouselNext.addEventListener("click", function () {
+      carouselGoTo(carouselIndex + 1);
+    });
+
+    var touchStartX = 0;
+    var touchStartY = 0;
+    var touchTracking = false;
+    carousel.addEventListener("touchstart", function (e) {
+      touchTracking = true;
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+    carousel.addEventListener("touchend", function (e) {
+      if (!touchTracking) return;
+      touchTracking = false;
+      var dx = e.changedTouches[0].clientX - touchStartX;
+      var dy = e.changedTouches[0].clientY - touchStartY;
+      if (Math.abs(dx) > 48 && Math.abs(dx) > Math.abs(dy) * 1.4) {
+        if (dx < 0) {
+          carouselGoTo(carouselIndex + 1);
+        } else {
+          carouselGoTo(carouselIndex - 1);
+        }
+      }
+    }, { passive: true });
+
+    carousel.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight") {
+        e.preventDefault();
+        carouselGoTo(carouselIndex + 1);
+      } else if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        carouselGoTo(carouselIndex - 1);
+      }
+    });
+
+    carouselGoTo(0);
+  }
+  var carouselGoToProject = null;
+  if (carousel) {
+    carouselGoToProject = function (id) {
+      for (var j = 0; j < carouselSlides.length; j++) {
+        if (carouselSlides[j].id === id) {
+          carouselGoTo(j);
+          return;
+        }
+      }
+    };
+  }
+
   // Interactive terminal in the hero.
   var termBody = document.getElementById("terminal-body");
   var termInput = document.getElementById("t-input");
@@ -112,7 +187,10 @@
     function scrollToProject(id, label) {
       renderLine("opening " + label + "...", "t-out");
       var el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: smoothScroll, block: "start" });
+      if (el) {
+        if (carouselGoToProject) carouselGoToProject(id);
+        el.scrollIntoView({ behavior: smoothScroll, block: "start" });
+      }
     }
 
     function runCommand(raw) {

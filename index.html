@@ -80,52 +80,113 @@
         <h2>Projects</h2>
       </div>
 
-      <div class="projects-grid">
-        <article class="card reveal" style="--i:1" id="case-musify">
-          <div class="card-top">
-            <span class="card-num">01 / musify</span>
-            <span class="status"><i class="dot dot-amber"></i> running</span>
-          </div>
-          <h3 class="card-title">Musify</h3>
-          <p class="tagline">A modern, ad-free music streaming experience built for the web.</p>
-          <p class="card-text">
-            Musify is a modern live music streaming website built with a Python/FastAPI backend and a
-            single-file vanilla JS frontend. It streams and delivers music data through a custom scraping
-            integration, with a redesigned sidebar and library UI for smooth browsing. Continuously
-            refined across multiple passes for performance, stability, and memory efficiency.
+      <div class="carousel reveal" id="projects-carousel" tabindex="-1" role="group" aria-roledescription="carousel" aria-label="Projects">
+
+        <div class="carousel-track" id="carousel-track">
+
+        <article class="carousel-slide project-slide is-active" id="case-musify">
+          <p class="project-meta">
+            <span class="project-counter">01 / musify</span>
+            <span class="project-status"><i class="dot dot-live"></i> live &middot; maintained</span>
           </p>
-          <p class="metric-chip"><span class="metric-pulse"></span>memory: ~5&nbsp;MB peak &rarr; ~500&nbsp;KB steady state</p>
-          <div class="card-tags">
+          <h3 class="project-title">Musify</h3>
+          <div class="project-visual">
+            <div class="visual-frame">
+              <div class="mock mock-musify">
+                <div class="mock-side">
+                  <div class="mock-brand"><i class="mock-mark"></i>musify</div>
+                  <div class="mock-nav"><span class="is-on"></span><span></span><span></span></div>
+                  <div class="mock-rule"></div>
+                  <div class="mock-list"><b></b><b></b><b></b></div>
+                </div>
+                <div class="mock-main">
+                  <div class="mock-top">
+                    <div class="mock-search"></div>
+                    <div class="mock-avatar"></div>
+                  </div>
+                  <div class="mock-now">
+                    <div class="mock-disc"></div>
+                    <div class="mock-now-meta"><span></span><span></span></div>
+                    <div class="mock-play"></div>
+                  </div>
+                  <div class="mock-rows">
+                    <div class="mock-track is-on"><i></i><span></span><b></b></div>
+                    <div class="mock-track"><i></i><span></span><b></b></div>
+                    <div class="mock-track"><i></i><span></span><b></b></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="project-statement">A modern, ad-free music streaming experience built for the web.</p>
+          <p class="project-desc">
+            Musify is a live music streaming site built on a Python/FastAPI backend with a
+            single-file vanilla JS frontend. It streams music through a custom scraping
+            integration and pairs it with a redesigned sidebar and library UI for smooth
+            browsing.
+          </p>
+          <p class="project-metric">mem &middot; ~5&nbsp;MB peak &rarr; ~500&nbsp;KB steady state</p>
+          <div class="project-tags">
             <span>Python</span><span>FastAPI</span><span>Vanilla JS</span><span>HTTP streaming</span>
           </div>
-          <div class="card-links">
+          <div class="project-links">
             <a href="https://github.com/codee-with-bhavya/Musify" target="_blank" rel="noopener noreferrer">GitHub <span class="arrow">&#8599;</span></a>
-<a href="https://musify.bhavyagoyal.workers.dev/" target="_blank" rel="noopener noreferrer">Live demo <span class="arrow">&#8599;</span></a>
-            </div>
+            <a href="https://musify.bhavyagoyal.workers.dev/" target="_blank" rel="noopener noreferrer">Live demo <span class="arrow">&#8599;</span></a>
+          </div>
         </article>
 
-        <article class="card reveal" style="--i:2" id="case-neurodesk">
-          <div class="card-top">
-            <span class="card-num">02 / neurodesk</span>
-            <span class="status"><i class="dot dot-teal"></i> shipped</span>
-          </div>
-          <h3 class="card-title">NeuroDesk</h3>
-          <p class="tagline">App that runs local LLM&rsquo;s on your machine — no cloud, no API.</p>
-          <p class="card-text">
-            A desktop app that runs 1300+ AI models entirely offline on your own hardware — your
-            library, your machine, nothing leaves your PC. No internet, no cloud services, or account
-            setup required. Built with a stable model engine and polished desktop interface that make
-            downloading, launching, and chatting with local models straightforward.
+        <article class="carousel-slide project-slide" id="case-neurodesk">
+          <p class="project-meta">
+            <span class="project-counter">02 / neurodesk</span>
+            <span class="project-status"><i class="dot dot-live"></i> shipped &middot; runs offline</span>
           </p>
-          <p class="metric-chip"><span class="metric-pulse"></span>installer exe: ~200 MB</p>
-          <div class="card-tags">
+          <h3 class="project-title">NeuroDesk</h3>
+          <div class="project-visual">
+            <div class="visual-frame">
+              <div class="mock mock-llm">
+                <div class="mock-side">
+                  <div class="mock-brand"><i class="mock-mark mock-mark-teal"></i>neurodesk</div>
+                  <div class="mock-nav"><span class="is-on"></span><span></span><span></span></div>
+                  <div class="mock-rule"></div>
+                  <div class="mock-model is-on"><span></span><small>7B q4</small></div>
+                  <div class="mock-model"><span></span><small>13B q5</small></div>
+                  <div class="mock-model"><span></span><small>llama.cpp</small></div>
+                </div>
+                <div class="mock-llm-main">
+                  <div class="mock-bubble is-user"></div>
+                  <div class="mock-bubble is-bot is-long"></div>
+                  <div class="mock-bubble is-bot"></div>
+                  <div class="mock-input"><span></span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="project-statement">App that runs local LLMs on your machine &mdash; no cloud, no API.</p>
+          <p class="project-desc">
+            A desktop app that runs 1300+ AI models entirely offline on your own hardware &mdash;
+            your library, your machine, nothing leaves your PC. No internet, cloud services, or
+            account setup required.
+          </p>
+          <p class="project-metric">pkg &middot; installer exe ~200&nbsp;MB</p>
+          <div class="project-tags">
             <span>Go</span><span>Electron</span><span>React</span><span>Inno Setup</span><span>HTTP streaming</span>
           </div>
-          <div class="card-links">
+          <div class="project-links">
             <a href="https://github.com/codee-with-bhavya" target="_blank" rel="noopener noreferrer">GitHub <span class="arrow">&#8599;</span></a>
             <a href="https://github.com/codee-with-bhavya" target="_blank" rel="noopener noreferrer">Live demo <span class="arrow">&#8599;</span></a>
           </div>
         </article>
+
+        </div>
+
+        <button class="carousel-arrow carousel-arrow-prev" id="carousel-prev" aria-label="Previous project" type="button">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 17.5L9 12l5.5-5.5"></path></svg>
+        </button>
+        <button class="carousel-arrow carousel-arrow-next" id="carousel-next" aria-label="Next project" type="button">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 17.5L15 12l-5.5-5.5"></path></svg>
+        </button>
+
+        <div class="carousel-status" id="carousel-status" aria-live="polite">Showing project 1 of 2</div>
       </div>
     </section>
 
