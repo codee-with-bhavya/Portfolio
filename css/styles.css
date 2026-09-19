@@ -152,7 +152,8 @@ a {
 
 /* Hero */
 .hero {
-  padding: 4.5rem 0 2.5rem;
+  padding: 4.5rem 0;
+  border-bottom: 1px solid var(--border);
 }
 
 .hero-grid {
@@ -322,6 +323,7 @@ a {
   font-family: var(--mono);
   font-size: 0.85rem;
   line-height: 1.95;
+  min-height: 12.545rem;
   max-height: 340px;
   overflow-y: auto;
 }
@@ -382,79 +384,6 @@ a {
 
 .t-active {
   min-height: 1.65em;
-}
-
-/* Stats */
-.stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  margin-top: 3.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--border);
-  animation: fade-up 0.8s 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-.stat:nth-child(n + 2) {
-  border-left: 1px solid var(--border);
-  padding-left: 2rem;
-}
-
-.stat-num {
-  font-family: var(--serif);
-  font-size: 2.4rem;
-  font-weight: 600;
-  color: var(--text);
-  font-variant-numeric: tabular-nums;
-}
-
-.stat-unit {
-  font-family: var(--mono);
-  font-size: 0.85rem;
-  color: var(--accent);
-  margin-left: 4px;
-}
-
-.stat-label {
-  display: block;
-  font-size: 0.82rem;
-  color: var(--faint);
-  margin-top: 2px;
-}
-
-/* Marquee */
-.marquee {
-  overflow: hidden;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  background: var(--surface);
-  padding: 0.8rem 0;
-  margin-bottom: 2rem;
-  user-select: none;
-}
-
-.marquee-track {
-  display: flex;
-  gap: 1.6rem;
-  align-items: center;
-  white-space: nowrap;
-  width: max-content;
-  animation: marquee 28s linear infinite;
-}
-
-.marquee:hover .marquee-track {
-  animation-play-state: paused;
-}
-
-.marquee-track span {
-  font-family: var(--mono);
-  font-size: 0.85rem;
-  color: var(--muted);
-}
-
-.marquee-track i {
-  font-style: normal;
-  color: var(--accent);
 }
 
 /* Sections */
@@ -817,11 +746,6 @@ a {
   to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
 /* Tablet */
 @media (max-width: 900px) {
   .hero-grid {
@@ -867,19 +791,6 @@ a {
 
   .hero-title {
     font-size: 2.15rem;
-  }
-
-  .stats {
-    grid-template-columns: 1fr;
-    gap: 1.1rem;
-    margin-top: 2.5rem;
-  }
-
-  .stat:nth-child(n + 2) {
-    border-left: none;
-    padding-left: 0;
-    border-top: 1px solid var(--border);
-    padding-top: 1rem;
   }
 
   .skills-grid {

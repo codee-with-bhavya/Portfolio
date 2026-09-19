@@ -56,42 +56,6 @@
     });
   }
 
-  // Count-up stats
-  var nums = document.querySelectorAll(".stat-num[data-count]");
-  var count = function (el) {
-    var target = parseInt(el.getAttribute("data-count"), 10);
-    var start = performance.now();
-    var duration = 900;
-    var tick = function (now) {
-      var t = Math.min((now - start) / duration, 1);
-      var eased = 1 - Math.pow(1 - t, 3);
-      el.textContent = Math.round(eased * target);
-      if (t < 1) requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-  };
-
-  if (!reduceMotion && "IntersectionObserver" in window) {
-    var counterIo = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            count(entry.target);
-            counterIo.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.4 }
-    );
-    nums.forEach(function (el) {
-      counterIo.observe(el);
-    });
-  } else {
-    nums.forEach(function (el) {
-      el.textContent = el.getAttribute("data-count");
-    });
-  }
-
   // Interactive terminal in the hero.
   var termBody = document.getElementById("terminal-body");
   var termInput = document.getElementById("t-input");
