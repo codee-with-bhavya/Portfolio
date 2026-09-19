@@ -102,6 +102,7 @@
   if (termBody && termInput && termTyped && termGhost && termActive) {
     var cmdHistory = [];
     var histIndex = 0;
+    var seedCount = termBody.children.length - 1;
     var projectInfo = {
       musify: [
         "Musify — Python/FastAPI music streamer, hand-scraped backend.",
@@ -173,8 +174,8 @@
       } else if (lower === "contact") {
         renderLine("bhavayagoyal07@gmail.com", "t-out");
       } else if (lower === "clear") {
-        while (termBody.firstChild && termBody.firstChild !== termActive) {
-          termBody.removeChild(termBody.firstChild);
+        while (termBody.children.length > seedCount + 1) {
+          termBody.removeChild(termBody.children[seedCount]);
         }
       } else if (lower.indexOf("sudo") === 0) {
         renderLine("nothing to elevate — everything here already runs locally.", "t-out");
