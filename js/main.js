@@ -91,4 +91,151 @@
       el.textContent = el.getAttribute("data-count");
     });
   }
+
+  // Interactive terminal in the hero.
+  var termBody = document.getElementById("terminal-body");
+  var termInput = document.getElementById("t-input");
+  var termTyped = document.getElementById("t-typed");
+  var termGhost = document.getElementById("t-ghost");
+  var termActive = document.getElementById("t-active");
+
+  if (termBody && termInput && termTyped && termGhost && termActive) {
+    var cmdHistory = [];
+    var histIndex = 0;
+    var projectInfo = {
+      musify: [
+        "Musify — Python/FastAPI music streamer, hand-scraped backend.",
+        "12 passes in — steady-state memory down from ~5MB to ~500KB."
+      ],
+      neurodesk: [
+        "NeuroDesk — desktop app for local LLMs, 1300+ models, zero cloud calls."
+      ]
+    };
+    var reduceMotionPref = reduceMotion;
+    var smoothScroll = reduceMotionPref ? "auto" : "smooth";
+
+    function mirrorBuffer() {
+      termTyped.textContent = termInput.value;
+      termGhost.style.opacity = termInput.value.length ? "0" : "1";
+      scrollTerminal();
+    }
+
+    function scrollTerminal() {
+      termBody.scrollTop = termBody.scrollHeight;
+    }
+
+    function renderLine(text, cls) {
+      var p = document.createElement("p");
+      if (cls) p.className = cls;
+      p.textContent = text;
+      termBody.insertBefore(p, termActive);
+      scrollTerminal();
+    }
+
+    function renderPrompt(command) {
+      var p = document.createElement("p");
+      p.className = "t-line";
+      var promptSpan = document.createElement("span");
+      promptSpan.className = "prompt";
+      promptSpan.textContent = "bhavya@local:~$ ";
+      p.appendChild(promptSpan);
+      p.appendChild(document.createTextNode(command));
+      termBody.insertBefore(p, termActive);
+      scrollTerminal();
+    }
+
+    function scrollToProject(id, label) {
+      renderLine("opening " + label + "...", "t-out");
+      var el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: smoothScroll, block: "start" });
+    }
+
+    function runCommand(raw) {
+      var value = (raw || "").trim();
+      var lower = value.toLowerCase();
+
+      if (lower === "help") {
+        renderLine("commands: ls projects, cat <project>, skills, about, contact, clear", "t-out");
+      } else if (lower === "ls" || lower === "ls projects" || lower === "ls projects/") {
+        renderLine(Object.keys(projectInfo).map(function (name) { return name + "/"; }).join("   "), "t-out");
+      } else if (lower.indexOf("cat ") === 0) {
+        var projName = value.slice(4).trim().toLowerCase();
+        if (projectInfo[projName]) {
+          projectInfo[projName].forEach(function (line) { renderLine(line, "t-out"); });
+        } else {
+          renderLine("no project named \"" + projName + "\" — run 'ls projects' to list available projects", "t-error");
+        }
+      } else if (lower === "skills" || lower === "tech-stack") {
+        renderLine("python · fastapi · asyncio · javascript · llama.cpp · gguf · websockets", "t-out");
+      } else if (lower === "about") {
+        renderLine("cs student @ J.C. Bose University of Science and Technology.", "t-out");
+        renderLine("builds self-hosted systems and local AI tooling.", "t-out");
+      } else if (lower === "contact") {
+        renderLine("bhavayagoyal07@gmail.com", "t-out");
+      } else if (lower === "clear") {
+        while (termBody.firstChild && termBody.firstChild !== termActive) {
+          termBody.removeChild(termBody.firstChild);
+        }
+      } else if (lower.indexOf("sudo") === 0) {
+        renderLine("nothing to elevate — everything here already runs locally.", "t-out");
+      } else if (lower === "open musify") {
+        scrollToProject("case-musify", "musify");
+      } else if (lower === "open neurodesk") {
+        scrollToProject("case-neurodesk", "neurodesk");
+      } else if (lower === "") {
+        // echo nothing for an empty enter
+      } else {
+        renderLine("command not found: " + value + " — type 'help' to see available commands", "t-error");
+      }
+    }
+
+    function submitCommand() {
+      var value = termInput.value;
+      if (value.length) {
+        cmdHistory.push(value);
+        renderPrompt(value);
+        runCommand(value);
+      }
+      histIndex = cmdHistory.length;
+      termInput.value = "";
+      mirrorBuffer();
+      termInput.focus({ preventScroll: true });
+    }
+
+    termInput.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        submitCommand();
+      } else if (e.key === "ArrowUp") {
+        e.preventDefault();
+        if (histIndex > 0) {
+          histIndex -= 1;
+          termInput.value = cmdHistory[histIndex];
+          mirrorBuffer();
+        }
+      } else if (e.key === "ArrowDown") {
+        e.preventDefault();
+        if (histIndex < cmdHistory.length - 1) {
+          histIndex += 1;
+          termInput.value = cmdHistory[histIndex];
+          mirrorBuffer();
+        } else {
+          histIndex = cmdHistory.length;
+          termInput.value = "";
+          mirrorBuffer();
+        }
+      } else if (e.key === "Tab") {
+        e.preventDefault();
+      }
+    });
+
+    termInput.addEventListener("input", mirrorBuffer);
+
+    termBody.addEventListener("click", function () {
+      termInput.focus({ preventScroll: true });
+    });
+
+    mirrorBuffer();
+    termInput.focus({ preventScroll: true });
+  }
 })();

@@ -56,15 +56,17 @@
               <span class="t-dot t-dot-green"></span>
               <span class="t-title">bhavya@local: ~</span>
             </div>
-            <div class="terminal-body">
-              <p class="t-line"><span class="prompt">bhavya@local:~$</span> whoami</p>
-              <p class="t-out">bhavya — cs student, software developer</p>
-              <p class="t-line"><span class="prompt">bhavya@local:~$</span> ls projects/</p>
-              <p class="t-out">musify, neurodesk</p>
-              <p class="t-line"><span class="prompt">bhavya@local:~$</span> tech-stack</p>
-              <p class="t-out">AI &middot; Web &middot; Frontend &middot; Software</p>
-              <p class="t-line"><span class="prompt">bhavya@local:~$ </span>_</p>
+            <div class="terminal-body" id="terminal-body">
+              <div class="t-line t-seed"><span class="prompt">bhavya@local:~$</span> whoami</div>
+              <div class="t-out t-seed">bhavya — cs student, software developer</div>
+              <div class="t-active" id="t-active">
+                <span class="prompt">bhavya@local:~$</span>
+                <span class="t-typed" id="t-typed"></span>
+                <span class="t-cursor" id="t-cursor"></span>
+                <span class="t-ghost" id="t-ghost">type help for commands</span>
+              </div>
             </div>
+            <input type="text" class="t-input" id="t-input" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="Terminal command input">
           </div>
         </div>
       </div>
@@ -107,7 +109,7 @@
       </div>
 
       <div class="projects-grid">
-        <article class="card reveal" style="--i:1">
+        <article class="card reveal" style="--i:1" id="case-musify">
           <div class="card-top">
             <span class="card-num">01 / musify</span>
             <span class="status"><i class="dot dot-amber"></i> running</span>
@@ -130,7 +132,7 @@
             </div>
         </article>
 
-        <article class="card reveal" style="--i:2">
+        <article class="card reveal" style="--i:2" id="case-neurodesk">
           <div class="card-top">
             <span class="card-num">02 / neurodesk</span>
             <span class="status"><i class="dot dot-teal"></i> shipped</span>
@@ -171,7 +173,7 @@
         <div class="skill-card reveal" style="--i:2">
           <span class="skill-idx">/back</span>
           <h3>Backend &amp; Systems</h3>
-          <p>FastAPI, Asyncio, HTTP Streaming, WebSockets, REST APIs, Innertube scrapers</p>
+          <p>FastAPI, Asyncio, HTTP Streaming, WebSockets, REST APIs</p>
         </div>
         <div class="skill-card reveal" style="--i:3">
           <span class="skill-idx">/llm</span>
@@ -194,7 +196,7 @@
       </div>
 
       <div class="about-grid">
-        <p class="about-lead reveal">I like building things that <em>actually run on your machine</em>, instead of living in a demo video or depending on someone else&rsquo;s subscription.</p>
+        <p class="about-lead reveal">I like turning ideas into <em>practical software</em>, from web applications and backend systems to desktop tools and AI workflows.</p>
         <div>
           <p class="about-text reveal">
             I&rsquo;m a Computer Science student at <strong>J.C. Bose University of Science and Technology</strong>.
